@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DATA</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Web-API Additional Data</h1>
+<p>The Web-API provides additional data which is not documented on the endpoints because 
+it may or may not be present.</p>
+<p>The following documentation tries to list all these properties, they will be present 
+on objects for which it makes sense. The current implementation state of the various data
+can be found <a href="DATA_IMPL.md">here</a>.</p>
+<p>Objects from the <code>/player</code>, <code>/entity</code>, <code>/tile-entity</code> as well as any item stacks 
+(in their <code>data</code> properties) may contain none, one or multiple of these properties.</p>
+<blockquote>
+<p>In the documentation below the &quot;carrier&quot; of a property is often referred to as the 
+'object', this is done to emphasize the fact that the property can be attached to 
+possibly various different things.</p>
+</blockquote>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#achievements">Achievements</a></li>
+<li><a href="#age">Age</a></li>
+<li><a href="#career">Career</a></li>
+<li><a href="#durability">Durability</a></li>
+<li><a href="#dye">Dye</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#food">Food</a></li>
+<li><a href="#gameMode">GameMode</a></li>
+<li><a href="#health">Health</a></li>
+<li><a href="#joined">Joined</a></li>
+<li><a href="#potionEffects">PotionEffects</a></li>
+<li><a href="#sheared">Sheared</a></li>
+<li><a href="#sign">Sign</a></li>
+<li><a href="#spawn">Spawn</a></li>
+<li><a href="#statistics">Statistics</a></li>
+<li><a href="#tameable">Tameable</a></li>
+<li><a href="#trades">Trades</a></li>
+</ol>
+<p><a name="achievements"></a></p>
+<h2>Achievements</h2>
+<p>Contains a list of achievements that have been granted to the object.
+<code>json
+&quot;achievements&quot;: [
+    {
+      &quot;id&quot;: &quot;mine_wood&quot;,
+      &quot;name&quot;: &quot;Getting Wood&quot;,
+      &quot;class&quot;: &quot;net.minecraft.stats.Achievement&quot;,
+      &quot;description&quot;: &quot;Attack a tree until a block of wood pops out&quot;
+    }
+]</code></p>
+<p><a name="age"></a></p>
+<h2>Age</h2>
+<p>Contains information about the age of an object.
+<code>json
+&quot;age&quot;: {
+  &quot;adult&quot;: false,
+  &quot;age&quot;: 35,
+}</code></p>
+<p><a name="career"></a></p>
+<h2>Career</h2>
+<p>Describes the profession of the object.
+<code>json
+&quot;career&quot;: &quot;minecraft:priest&quot;</code></p>
+<p><a name="durability"></a></p>
+<h2>Durability</h2>
+<p>Describes the durability of an object.
+<code>json
+&quot;durability&quot;: {
+    &quot;unbreakable&quot;: false,
+    &quot;durability&quot;: 1561
+}</code></p>
+<p><a name="dye"></a></p>
+<h2>Dye</h2>
+<p>The color of an object.
+<code>json
+&quot;dye&quot;: &quot;white&quot;</code></p>
+<p><a name="experience"></a></p>
+<h2>Experience</h2>
+<p>The amount of experience an object has.
+<code>json
+&quot;experience&quot;: {
+    &quot;level&quot;: 0,
+    &quot;experience&quot;: 0,
+    &quot;totalExperience&quot;: 0
+}</code></p>
+<p><a name="food"></a></p>
+<h2>Food</h2>
+<p>The current food levels of an object.
+<code>json
+&quot;food&quot;: {
+    &quot;foodLevel&quot;: 20,
+    &quot;exhaustion&quot;: 3.049999952316284,
+    &quot;saturation&quot;: 1.0
+}</code></p>
+<p><a name="game-mode"></a></p>
+<h2>GameMode</h2>
+<p>The game mode the object is currently in.
+<code>json
+&quot;gameMode&quot;: &quot;minecraft:creative&quot;</code></p>
+<p><a name="health"></a></p>
+<h2>Health</h2>
+<p>The health information of the object
+<code>json
+&quot;health&quot;: {
+    &quot;current&quot;: 20.0,
+    &quot;max&quot;: 20.0
+}</code></p>
+<p><a name="joined"></a></p>
+<h2>Joined</h2>
+<p>Information about when the object first/last joined the server.
+<code>json
+&quot;joined&quot;: {
+    &quot;first&quot;: 1489329688,
+    &quot;last&quot;: 1492426023
+}</code></p>
+<p><a name="potion-effects"></a></p>
+<h2>PotionEffects</h2>
+<p>A list of effects from potions attached to/affecting the object.
+<code>json
+&quot;potionEffects&quot;: [{
+    &quot;type&quot;: &quot;minecraft:instant_damage&quot;,
+    &quot;amplifier&quot;: 1,
+    &quot;duration&quot;: 1
+}]</code></p>
+<p><a name="sheared"></a></p>
+<h2>Sheared</h2>
+<p>True if the object has been sheared, false otherwise.
+<code>json
+&quot;sheared&quot;: false</code></p>
+<p><a name="sign"></a></p>
+<h1>Sign</h1>
+<p>A list of lines of text that are displayed on an object.
+<code>json
+&quot;sign&quot;: [
+    &quot;Hi&quot;,
+    &quot;How are you?&quot;,
+    &quot;&quot;,
+    &quot;Web-API&quot;
+ ]</code></p>
+<p><a name="spawn"></a></p>
+<h2>Spawn</h2>
+<p>Information about which entity is spawned by the object.
+<code>json
+&quot;spawn&quot;: &quot;minecraft:skeleton_horse&quot;</code></p>
+<p><a name="statistics"></a></p>
+<h2>Statistics</h2>
+<p>Statistical data about the object.
+<code>json
+&quot;statistics&quot;: {
+    &quot;chest_opened&quot;: 2,
+    &quot;use_item.minecraft.dispenser&quot;: 1,
+    &quot;walk_one_cm&quot;: 38715,
+    &quot;use_item.minecraft.sapling&quot;: 1,
+    &quot;use_item.minecraft.chest&quot;: 2,
+    &quot;craft_item.minecraft.planks&quot;: 16,
+    &quot;leave_game&quot;: 34,
+    &quot;craft_item.minecraft.crafting_table&quot;: 1,
+    &quot;dispenser_inspected&quot;: 1,
+    &quot;use_item.minecraft.dark_oak_stairs&quot;: 2,
+    &quot;use_item.minecraft.dye&quot;: 2,
+    &quot;mine_block.minecraft.log&quot;: 1,
+    &quot;talked_to_villager&quot;: 6,
+    &quot;pickup.minecraft.log&quot;: 62,
+    &quot;fly_one_cm&quot;: 1351,
+    &quot;deaths&quot;: 10,
+    &quot;jump&quot;: 15,
+    &quot;play_one_minute&quot;: 1107890,
+    &quot;fall_one_cm&quot;: 20680,
+    &quot;use_item.minecraft.planks&quot;: 2,
+    &quot;sneak_time&quot;: 5,
+    &quot;use_item.minecraft.spruce_stairs&quot;: 5,
+    &quot;crouch_one_cm&quot;: 31,
+    &quot;time_since_death&quot;: 485335,
+    &quot;pickup.minecraft.sapling&quot;: 1,
+    &quot;use_item.minecraft.dirt&quot;: 11,
+    &quot;sprint_one_cm&quot;: 1745,
+    &quot;use_item.minecraft.stained_glass&quot;: 1,
+    &quot;use_item.minecraft.sign&quot;: 3,
+    &quot;use_item.minecraft.red_sandstone_stairs&quot;: 2,
+    &quot;use_item.minecraft.spawn_egg&quot;: 8
+}</code></p>
+<p><a name="tameable"></a></p>
+<h2>Tameable</h2>
+<p>Signifies that an object is tameable and contains information about whether the 
+object is tamed or not and the possible owner.
+<code>json
+&quot;tameable&quot;: {
+    &quot;isTamed&quot;: true,
+    &quot;owner&quot;: {
+        &quot;type&quot;: &quot;minecraft:player&quot;,
+        &quot;uuid&quot;: &quot;357427c6-3b91-4ead-aad4-15a3e18e6452&quot;,
+        &quot;location&quot;: {
+            &quot;world&quot;: {
+                &quot;name&quot;: &quot;world&quot;,
+                &quot;uuid&quot;: &quot;c574ab53-831b-4410-b3ad-955a2a504843&quot;,
+                &quot;link&quot;: &quot;/api/world/c574ab53-831b-4410-b3ad-955a2a504843&quot;
+            },
+            &quot;position&quot;: {
+                &quot;x&quot;: -2.0039034033218073,
+                &quot;y&quot;: 4.0,
+                &quot;z&quot;: -2.026152060791321
+            }
+        },
+        &quot;name&quot;: &quot;Valandur&quot;,
+        &quot;link&quot;: &quot;/api/player/357427c6-3b91-4ead-aad4-15a3e18e6452&quot;,
+        &quot;class&quot;: &quot;net.minecraft.entity.player.EntityPlayerMP&quot;
+    }
+}</code></p>
+<p><a name="trades"></a></p>
+<h2>Trades</h2>
+<p>Contains information about the trades the object offers.
+<code>json
+&quot;trades&quot;: [{
+    &quot;hasExpired&quot;: false,
+    &quot;grantsExp&quot;: true,
+    &quot;uses&quot;: 0,
+    &quot;maxUses&quot;: 0,
+    &quot;firstBuyingItem&quot;: {
+        &quot;id&quot;: &quot;minecraft:rotten_flesh&quot;,
+        &quot;quantity&quot;: 39
+    },
+    &quot;secondBuyingItem&quot;: {
+        &quot;id&quot;: &quot;minecraft:air&quot;,
+        &quot;quantity&quot;: 0
+    },
+    &quot;sellingItem&quot;: {
+        &quot;id&quot;: &quot;minecraft:emerald&quot;,
+        &quot;quantity&quot;: 1
+    }
+}]</code></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

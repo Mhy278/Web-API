@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Web-API API</h1>
+<p>The Web-API API offers an interface for other plugins to interact with the Web-API. This allows
+other plugins to provide their own endpoints for data without much effort.</p>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#setup">Setup</a></li>
+<li>
+<a href="#servlets">Servlets</a>
+<ol>
+<li><a href="#servlet-example">Example</a></li>
+</ol>
+</li>
+<li>
+<a href="#endpoints">Endpoints</a>
+<ol>
+<li><a href="#endpoint-example">Example</a></li>
+</ol>
+</li>
+<li><a href="#serializing">Serializing data</a></li>
+<li><a href="#return">Returning data</a></li>
+</ol>
+<p><a name="setup"></a></p>
+<h2>Setup</h2>
+<blockquote>
+<p>You have to register any servlets you create with the Web-API</p>
+</blockquote>
+<p>The easiest way to do this is to use <code>WebAPIAPI.getServletService()</code>, which will return an 
+optional containing the ServletService. If the optional is empty than the Web-API plugin is 
+not present or loaded on the server. If the ServletService is present you can use 
+<code>service.registerServlet(Class&lt;? extends BaseServlet&gt; servlet)</code> to register your servlet class
+with the Web-API.
+```java
+public void onInitialization(GameInitializationEvent event) {
+    ...</p>
+<pre><code>WebAPIAPI.getServletService().ifPresent(srv -&gt; {
+    srv.registerServlet(MyServlet.class);
+});
+
+...
+</code></pre>
+
+<p>}
+```</p>
+<blockquote>
+<p>This should be done in the initialization phase of your plugin, before the server starts!</p>
+</blockquote>
+<p><a name="servlets"></a></p>
+<h2>Servlets</h2>
+<p>Servlets are a collection of routes. This allows you to easily group all data that belongs together.</p>
+<p>At runtime the Web-API will create an instance of your servlet and use it to serve the routes
+that you specified.</p>
+<blockquote>
+<p>Note that your servlet is re-initialized (a new class instance is created) when the Web-API 
+performs a reload (e.g. through <code>sponge plugins reload</code>), so any initialization that your routes
+require should be handled in your constructor.</p>
+</blockquote>
+<p>Your servlet class needs to extend <code>BaseServlet</code>, which is the base servlet that provides
+some functionality for your servlet to use.</p>
+<p>You must also add the <code>@Servlet(basePath = &quot;&quot;)</code> annotation to the class. This annotation
+tells the Web-API that your class is indeed a valid servlet, and which base route to use. </p>
+<ul>
+<li>The <code>basePath</code> specifies at which path your servlet will be available, and all the other 
+routes in your servlet will be relative to this route.The <code>basePath</code> does <strong>not</strong> require any 
+slashes <code>/</code> and may <strong>not</strong> contain any path parameters (see below).</li>
+</ul>
+<p>Servlets may define a <code>public static void onRegister()</code> method which will get called by the 
+Web-API when the servlet is registered. This is only done once, even if the user reloads the 
+plugins on the server. This is the best place to register any custom data classes/view 
+serializers that your servlet uses:
+<code>java
+public static void onRegister() {
+    WebAPIAPI.getSerializeService().ifPresent(srv -&gt; {
+        srv.registerCache(MyData.class, MyCachedData.class);
+        srv.registerView(MyData.class, MyDataView.class);
+    });
+}</code></p>
+<blockquote>
+<p>You can read more about data serialization in the <a href="#serializing">section below</a></p>
+</blockquote>
+<p><a name="servlet-example"></a></p>
+<h3>Example</h3>
+<p>```java
+import valandur.webapi.api.servlet.BaseServlet;
+import valandur.webapi.api.servlet.Servlet;</p>
+<p>@Servlet(basePath = &quot;my-servlet&quot;)
+public class MyServlet extends BaseServlet {</p>
+<p>}
+```</p>
+<p>This code sample creates a servlet that operates on the route <code>/api/my-servlet/*</code>, but does not yet
+contain any actual endpoints that do anything.</p>
+<p><a name="endpoints"></a></p>
+<h2>Endpoints</h2>
+<p>Endpoints are the actual routes that handle the data processing within a servlet.</p>
+<p>Your routes must be methods/functions that return <code>void</code> and have at least one parameter of type
+<code>IServletData</code>. The name of the method is up to you, and should probably be something that 
+describes what the endpoint does.</p>
+<p>The methods must also be marked with the <code>@Endpoint(method = HttpMethod, path = &quot;&quot;, perm = &quot;&quot;)</code>
+annotation. This annotation tells the Web-API that the provided method is actually an endpoint,
+and what type of endpoint it is.</p>
+<ul>
+<li>
+<p>The <code>method</code> argument specifies what HttpMethod this endpoint listens to 
+(check <code>org.eclipse.jetty.http.HttpMethod</code>. Includes <code>GET</code>, <code>POST</code> and many more).</p>
+</li>
+<li>
+<p>The <code>perm</code> argument tells the Web-API which permissions node is required for this endpoint.</p>
+</li>
+<li>
+<p><code>path</code> is the path of the endpoint relative to the <code>basePath</code> of the servlet. The path may
+contain path parameters, which are parsed and passed to the method by the Web-API.<br />
+A path parameter is specified with a leading double point <code>:</code> e.g. <code>path=&quot;/test/:arg&quot;</code>. In this
+case the path parameter is called <code>arg</code>. You can access this path parameter in two different ways:</p>
+<ul>
+<li>Using <code>data.getPathParam(&quot;arg&quot;)</code>, where <code>data</code> is the <code>IServletData</code> parameter of the method
+that is always required to be there<br />
+<strong>or</strong></li>
+<li>By adding an additional argument to the method with the type of the parameter 
+(example below). This allows the Web-API to parse certain types of parameters and display 
+an error to the user in case the parameter is not of the correct type.  
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>The Web-API supports the following types of path parameters by using them as method arguments:
+<strong>Integer/int, Long/long, Double/double, String, Boolean/boolean, UUID, 
+ICachedEntity, ICachedPlayer, ICachedWorld</strong><br />
+For ICachedEntity, ICachedPlayer and ICachedWorld the parameter is assumed to be the entity's,
+player's or world's <strong>UUID</strong>, and the Web-API tries to find the requested object by that.</p>
+</blockquote>
+<p><a name="endpoint-example"></a></p>
+<h3>Example</h3>
+<p>```java
+import valandur.webapi.api.servlet.BaseServlet;
+import valandur.webapi.api.servlet.Endpoint;
+import valandur.webapi.api.servlet.IServletData;
+import valandur.webapi.api.servlet.Servlet;
+import valandur.webapi.api.cache.world.ICachedWorld;</p>
+<p>@Servlet(basePath = &quot;my-servlet&quot;)
+public class MyServlet extends BaseServlet {</p>
+<pre><code>@Endpoint(method = HttpMethod.GET, path = &quot;/test/:world/:myInt&quot;, perm = &quot;test&quot;)
+public void testRoute(IServletData data, ICachedWorld world) {
+    // Get the path parameter we specified above. Note that when accessing the path
+    // parameters like this they are not parsed but returned as a String, and it is
+    // up to you to do an pre-processing, like checking for valid numbers etc.
+    data.addData(&quot;int&quot;, data.getPathParam(&quot;myInt&quot;), false);
+
+    // Adding the path parameter to the argument list allows the Web-API to parse
+    // the parameter to the according type. In case of players, entities and worlds
+    // the parameter is assumed to be the player's/entity's/world's UUID. An error
+    // is automatically returned to the user in case the player/entity/world is not 
+    // found or the parameter is otherwise invalid. This means your method does not 
+    // have to worry about invalid/missing parameters. 
+    data.addData(&quot;world&quot;, world, true);
+
+    // Everything is ok
+    data.addData(&quot;ok&quot;, true, false);
+}
+</code></pre>
+
+<p>}
+```</p>
+<p>This example reuses the servlet we defined above.<br />
+It adds the endpoint <code>testRoute</code>, which will be available at <code>/api/my-servlet/test/:world/:myInt</code>.
+The permissions for this endpoint are handled in the <code>test</code> permissions node, under the <code>my-servlet</code>
+endpoint.</p>
+<p><a name="serializing"></a></p>
+<h2>Serializing Data</h2>
+<p>The Web-API automatically turns java objects into json. Sometimes this can be a little
+overwhelming to do for a program, so you can help it by giving it hints as to what it should
+include, and how.</p>
+<blockquote>
+<p>Although a lot of this documentation refers to JSON, your data will automatically be converted
+to XML according to the same rules as JSON if the user requests an XML response.</p>
+</blockquote>
+<p>There are two ways to define how your java objects are turned into json:</p>
+<h3>1. Annotations</h3>
+<p>By default all <strong>public fields</strong> and <strong>public methods that are getters</strong> (begin with <code>get</code> and 
+have a return value and no arguments) are used for serialization. Also methods that return
+boolean values and begin with <code>is</code>.</p>
+<p>You can use the annotations of the jackson library to further specify how your data should be
+serialized. The most important annotations are:
+- <code>JsonProperty</code> with which you can define how your property should be serialized 
+  (name, default value, etc.)
+- <code>JsonIgnore</code> which you can use to ignore a field/method completely
+- <code>JsonDetails</code> which you can use to specify that a field should only be present when the user
+wishes to retrieve all of the object data. <em>This annotation is from the Web-API API itself, not
+from the jackson library.</em> 
+- <code>JsonAnyGetter</code> which can be used on a method that returns a map from string to object,
+which contains all/additional properties of the current object.
+- <code>JsonValue</code> which can be used on a field or method to serialize the whole object as the
+marked field or method.</p>
+<p>You can find more information about all the jackson annotations in their 
+<a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations">official documentation</a>.</p>
+<p>Simply add these annotations to your java objects that you return in your endpoints, and Web-API
+will take care of serializing your data to json.</p>
+<h3>2. Views</h3>
+<p>Views are used when you don't have direct access to a certain class (for example when serialing
+sponge/minecraft objects), or annotations are too complicated to use.</p>
+<p>A view defines a &quot;copy&quot; of your data object, which contains only the data which will
+be serialized. This can also be used for caching means, if your data object is not thread safe.</p>
+<p>Views can also take advantage of all the annotations listed above, but should be built with
+json data already in mind, so should not need many of them.</p>
+<blockquote>
+<p>The Web-API already provides views for most sponge related data objects, such as Worlds, 
+Players, Entities, Inventories, Blocks and more.</p>
+</blockquote>
+<p>Your view must extend the class <code>BaseView&lt;T&gt;</code> of the Web-API API, and provide the class for
+which you are providing a view as the type argument, and provide a matching constructor.</p>
+<p>You must register your view with the Web-API. A good place to do this is in the 
+<code>public static void onRegister()</code> function of your servlet.</p>
+<p>Following is an example View for Sponge's <code>BlockState</code>:</p>
+<p>```java
+package valandur.webapi.serialize.view.block;</p>
+<p>import org.spongepowered.api.block.BlockState;
+import org.spongepowered.api.block.BlockType;
+import org.spongepowered.api.block.trait.BlockTrait;
+import valandur.webapi.api.serialize.JsonDetails;
+import valandur.webapi.api.serialize.BaseView;</p>
+<p>import java.util.HashMap;
+import java.util.Map;</p>
+<p>public class BlockStateView extends BaseView<BlockState> {</p>
+<pre><code>public BlockType type;
+
+
+public BlockStateView(BlockState value) {
+    super(value);
+
+    this.type = value.getType();
+}
+
+@JsonDetails
+public Map&lt;String, Object&gt; getData() {
+    HashMap&lt;String, Object&gt; data = new HashMap&lt;&gt;();
+    for (Map.Entry&lt;BlockTrait&lt;?&gt;, ?&gt; entry : value.getTraitMap().entrySet()) {
+        data.put(entry.getKey().getName(), entry.getValue());
+    }
+    return data;
+}
+</code></pre>
+
+<p>}
+```
+As you can see it has the sponge <code>BlockState</code> class as it's type argument, and provides a
+constructor that matches the type argument.</p>
+<p>Since <code>type</code> is a public field it will automatically get serialized
+(The Web-API already provides a view for Sponge's <code>CatalogType</code>).</p>
+<p>The <code>getData()</code> method will be serialized as well (since it starts with <code>get</code> and has no
+arguments and a return type other than void), but only if the details for the object are
+requested (since the method is annotated with <code>JsonDetails</code>). This prevents the system
+from going through all the traits of a block, unless they are actually required.</p>
+<p>And you would register this view the following way:
+<code>java
+public static void onRegister() {
+    WebAPIAPI.getSerializeService().ifPresent(srv -&gt; {
+        srv.registerView(BlockState.class, BlockStateView.class);
+    });
+}</code></p>
+<p><a name="return"></a></p>
+<h2>Returning data</h2>
+<p>The <code>IServletData</code> object which is part of all your method endpoints contains the method
+<code>addData(String key, Object data, boolean details)</code>, which adds data to the response object 
+which will be returned by the request.</p>
+<ul>
+<li>
+<p>The <code>key</code> (<code>String</code>) is the key of the returned data.</p>
+</li>
+<li>
+<p>The <code>data</code> argument (<code>Object</code>) is the java object which will be returned. This will automatically
+be converted into JSON/XML according to the methods stated above.</p>
+</li>
+<li>
+<p>The <code>details</code> argument (<code>boolean</code>) specifies if details should be included for the serialized
+objects. Excluding details makes your response smaller and faster, and makes sense if you are
+for example returning a list of objects.</p>
+</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

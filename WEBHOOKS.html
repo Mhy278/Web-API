@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WEBHOOKS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Web-API WebHooks</h1>
+<p>WebHooks are ways to subscribe to the Web-API to get informed when certain events happen on the
+server. Hooks can be configured in the <code>config/webapi/hooks.conf</code>. The configuration options available
+will be described in this documentation.</p>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#general">General settings</a></li>
+<li><a href="#types">Hook types</a></li>
+<li><a href="#event">Event hooks</a></li>
+<li><a href="#custom-event">Custom event hooks</a></li>
+<li><a href="#command">Command hooks</a></li>
+<li><a href="#filters">Filter</a></li>
+<li><a href="#responses">Hook responses</a></li>
+</ol>
+<p><a name="general"></a></p>
+<h2>General settings</h2>
+<p>Each WebHook supports various configuration settings, which are described below.</p>
+<ul>
+<li>
+The <code>address</code> defines which endpoint is contacted when an event occurs.
+<code>yaml
+address=&quot;http://127.0.0.1:25000/&quot;</code>
+</li>
+<li>
+The <code>method</code> defines which HTTP Verb is used to contact the server. This can be either <em>GET</em>,
+<em>PUT</em>, <em>POST</em> or <em>DELETE</em>. Please not that <em>GET</em> requests do <strong>NOT</strong> support a data payload.
+<code>yaml
+ method=POST</code>
+</li>
+<li>
+The <code>dataType</code> defines how the data payload is sent to the server. This can be either <em>JSON</em> or
+<em>XML</em>.
+<code>yaml
+dataType=JSON</code>
+</li>
+<li>
+The boolean <code>form</code> field can be used to send the data formatted as x-www-form-urlencoded 
+to the server. Please note that when using <code>form=true</code> the actual payload is still formatted 
+as JSON/XML, but is wrapped into a form-property called <code>data</code>.
+<code>yaml
+form=true</code> 
+</li>
+<li>
+Setting <code>enabled</code> to false disabled the hook. This is useful when the hook isn't needed anymore
+but should be kept in the config in case it might have to be re-enabled later on.
+<code>yaml
+enabled=false</code>
+</li>
+<li>
+Setting <code>details</code> to true includes more information in the data payload. This can be used to
+avoid a second follow-up request in case specific information about an object is required.
+<code>yaml
+details=false</code>
+</li>
+<li>
+The <code>permissions</code> node specifies what data is sent to the endpoint. Refer to the 
+<a href="PERMISSIONS.md">permissions documentation</a> for more information regarding permissions.
+Use <code>permissions=&quot;*&quot;</code> to send all data (also depends on <code>details</code>)
+<code>yaml
+permissions=&quot;*&quot;</code>
+</li>
+<li>
+<code>headers</code> are passed to the server as HTTP header fields. This can be usefull to include some 
+kind of authentication so that the other endpoint can be sure only the Web-API is sending data.
+It can also be used for custom values when using command hooks (see below)
+<code>yaml
+headers=[{
+    name=X-WEBAPI-KEY
+    value=MY-SUPER-SECRET-KEY
+}]</code>
+</li>
+<li><code>filter</code> defines if and which filter is applied to this WebHook</li>
+</ul>
+<p>Here is an example of a hook:
+<code>yaml
+{
+    address=&quot;http://127.0.0.1:25000&quot;
+    method=POST
+    dataType=JSON
+    form=false
+    enabled=true
+    details=false
+    permissions=&quot;*&quot;
+    headers=[{
+        name=X-WEBAPI-KEY
+        value=MY-SUPER-SECRET-KEY
+    }]
+    filter {
+        name=&quot;WebAPI-BlockType&quot;
+        config=[
+            &quot;minecraft:wooden_button&quot;
+            &quot;minecraft:stone_button&quot;
+        ]
+    }
+}</code>
+This hook would contact the server running at <code>127.0.0.1:25000</code> and send an HTTP POST request to it.
+The request would contain an additional header called <code>X-WEBAPI-KEY</code> with the value
+<code>MY-SUPER-SECRET-KEY</code>. The data would be formatted as JSON and would not include details. The hook would
+only be executed if the <code>WebAPI-BlockType</code> filter would allow it - in this case when either a 
+<code>wooden_button</code> or <code>stone_button</code> block are being targeted.</p>
+<p>Let's look at another example:
+<code>yaml
+{
+    address=&quot;http://webapi.mydomain.com/hook.php&quot;
+    method=POST
+    dataType=XML
+    form=true
+    enabled=true
+    details=true
+    permissions=&quot;*&quot;
+}</code>
+This hook would contact the script at <code>webapi.mydomain.com/hook.php</code> and send an HTTP POST request 
+to it. The data would be formatted as XML, wrapped in a <code>application/x-www-form-urlencoded</code> 
+request and include all details.</p>
+<blockquote>
+<p>The Web-API supports multiple hooks, which is why all the configuration nodes where you can put a 
+WebHook are lists. These hooks are all fired when that particular thing happens, but they are <strong>NOT</strong> 
+guaranteed to be executed in any specific order, and <strong>MIGHT</strong> even be executed simultaneously.</p>
+</blockquote>
+<p><a name="types"></a></p>
+<h2>Hook types</h2>
+<p>There are currently 3 different kinds of hooks:</p>
+<ol>
+<li>
+<p><strong><a href="#event">Event hooks</a></strong><br />
+These hooks are executed for certain Minecraft events</p>
+</li>
+<li>
+<p><strong><a href="#custom-event">Custom event hooks</a></strong><br />
+These hooks are executed for any custom events that you define</p>
+</li>
+<li>
+<p><strong><a href="#command">Command hooks</a></strong><br />
+These hooks are executed by calling a specific command, and support arguments</p>
+</li>
+</ol>
+<p><a name="event"></a></p>
+<h2>Event hooks</h2>
+<p>Event hooks are fired when a specific Minecraft event happens. The Web-API supports quite a lot
+of events out of the box, but if you need any event that isn't listed here you can always use
+a <strong>custom event hook</strong>, described in the next section.  </p>
+<p>Following is a list of all the events supported by the Web-API, as well as a short explanation
+as to when that event is triggered.</p>
+<p>| Event / Hook name   | Description |
+| ------------------- | ----------- |
+| ALL                 | Fired for all events listed below
+| CUSTOM<em>MESSAGE      | Use this hook to capture the response from <a href="MESSAGE.md">Messages</a>
+| ACHIEVEMENT         | Fired when a player earns a new achievement
+| BLOCK</em>UPDATE<em>STATUS | Fired when a Web-API BlockUpdate changes status
+| CHAT                | Fired when a chat message is sent (by players)
+| COMMAND             | Fired when a command is executed
+| GENERATE<em>CHUNK      | Fired when a new chunk is generated
+| EXPLOSION           | Fired when an explosion happens
+| INTERACT</em>BLOCK      | Fired when a player interacts with a block
+| INVENTORY</em>OPEN      | Fired when a player opens an inventory
+| INVENTORY<em>CLOSE     | Fired when a player closes an inventory
+| PLAYER</em>JOIN         | Fired when a player joins the server
+| PLAYER_LEAVE        | Fired when a player leaves the server
+| PLAYER<em>DEATH        | Fired when a player dies
+| PLAYER</em>KICK         | Fired when a player gets kicked from the server
+| PLAYER<em>BAN          | Fired when a user is banned from the server
+| SERVER<em>START        | Fired after the server starts
+| SERVER</em>STOP         | Fired before the server stops
+| WORLD</em>SAVE          | Fired when a world is saved
+| WORLD<em>LOAD          | Fired when a world is loaded
+| WORLD</em>UNLOAD        | Fired when a world is unloaded</p>
+<p>To subscribe to one of these events add your WebHook to the specific list in the <code>events</code> object.
+For example:
+<code>yaml
+events {
+    achievement=[
+        # YOUR HOOKS GO HERE
+    ]
+}</code></p>
+<p><a name="custom"></a></p>
+<h2>Custom event hooks</h2>
+<p>Some events are not included in the Web-API, usually because I didn't know about them, or didn't have
+enough time to add them. <strong>Events of other plugins and/or mods are also not included</strong>, this is for
+obvious reasons as there are way too many mods to support.</p>
+<p>This is why the Web-API offers custom event hooks, where you can listen to any Sponge events you wish,
+and add your hooks to those.</p>
+<p>To subscribe to a custom event just add the fully qualified class name of the event to the <code>custom</code>
+object as the key, and a list of hooks as the value.<br />
+For example:
+<code>yaml
+custom={
+    &quot;org.spongepowered.api.event.command.SendCommandEvent&quot;: [
+        # YOUR HOOKS GO HERE
+    ]
+}</code></p>
+<p><a name="command"></a></p>
+<h2>Command hooks</h2>
+<p>Command hooks are invoked with specific commands and can even contain arguments. This is a good way
+to offer players a way to trigger certain actions.</p>
+<p>Command hooks are defined in the <code>command</code> object in the config. Let's start with an example:
+```yaml
+command = {
+    test={
+        enabled=true</p>
+<pre><code>    aliases=[
+        testing
+    ]
+
+    params=[
+        {
+            name=the_player
+            type=player
+        },
+        {
+            name=the_world
+            type=world
+            optional=true
+        }
+    ]
+
+    hooks=[{
+        address=&quot;http://127.0.0.1:25000/{the_world}&quot;
+        enabled=false
+        headers=[{
+            name=X-WEBAPI-PLAYER
+            value=&quot;{the_player}&quot;
+        }]
+    }]
+}
+</code></pre>
+
+<p>}
+```
+This command hook is called <code>test</code>, and is therefor invoked by calling <code>/webapi notify test</code>. </p>
+<p>The property <code>enabled</code> can be set to false to disable the whole command hook, including registering
+the command with the command registry.</p>
+<p>It has <code>testing</code> set up as an alias, and can therefor also be called by using <code>/testing</code>. Be careful
+with aliases, as they can overwrite existing minecraft commands.</p>
+<p>It has 2 parameters, the first one is a player, the second one is optional and is a world. You would
+call the command with e.g. <code>/webapi notify test @p world</code> or <code>/testing Valandur</code>.  </p>
+<blockquote>
+<p>The Web-API supports the following parameter types:<br />
+STRING, BOOL, INTEGER, DOUBLE, PLAYER, WORLD, LOCATION, VECTOR3D, VECTOR3I</p>
+</blockquote>
+<p>Any of these parameters can be marked with <code>optional=true</code> to make it an optional parameter.</p>
+<p>The <code>hooks</code> property is a list that contains hook definitions similar to the ones described further
+above. Additionally they support the parameters defined in the <code>params</code> object.<br />
+When using the variable name of a parameter in curly braces (e.g. <code>{the_player}</code> for the example above)
+this value is replaced with the value of the parameter during execution. For worlds and players this 
+is their UUID, for all other types it's the exact value.</p>
+<p>All parameters are also automatically included in the payload of the HTTP request.</p>
+<p><a name="filters"></a></p>
+<h2>WebHook Filters</h2>
+<p>WebHook filters can be used to filter out only certain events. Read more about them
+<a href="WEBHOOKS_FILTERS.md">here</a>.</p>
+<p><a name="general"></a></p>
+<h2>Hook responses</h2>
+<p>If the endpoint that the Web-API contacts returns any other HTTP Code than 200 it will
+be logged to the console.</p>
+<p>The endpoint may return a JSON object to instruct the Web-API to send messages to players. This can
+be used to give players a feedback in response to their actions (useful for command hooks) or inform
+admins of certain events.</p>
+<p>The structure of the JSON response should look as follows:
+<code>json
+{
+    &quot;targets&quot;: [ &quot;357427c6-3b91-4ead-aad4-15a3e18e6452&quot;, &quot;server&quot; ],
+    &quot;message&quot;: &quot;Hello there!&quot;
+}</code>
+The <code>targets</code> property is an array of strings. These can either be player UUIDs, to which the 
+message is sent directly, or the string <code>&quot;server&quot;</code>, which means the message will be broadcast to 
+the whole server.</p>
+<p>The <code>message</code> property is the actual message that is sent to the players/server. It is formatted with 
+<a href="https://docs.spongepowered.org/stable/en-GB/plugin/text/representations/formatting-code-legacy.html#ampersand-formatting">Ampersand formatting</a></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
